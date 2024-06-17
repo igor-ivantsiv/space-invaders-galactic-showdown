@@ -2,14 +2,14 @@ class superman {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
       this.width = 40;
-      this.height = 80;
+      this.height = 40;
       this.top = this.gameScreen.clientHeight - this.height - 40;
       this.left = (this.gameScreen.clientWidth - this.width) / 2;
       this.element = document.createElement("img");
       this.speed = 3;
       this.directionX = 0;
   
-      this.element.src = "";
+      this.element.src = "../images/superman";
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
