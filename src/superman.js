@@ -1,15 +1,15 @@
-class superman {
+class Superman {
     constructor(gameScreen) {
       this.gameScreen = gameScreen;
       this.width = 40;
       this.height = 40;
-      this.top = this.gameScreen.clientHeight - this.height - 40;
+      this.top = this.gameScreen.clientHeight - this.height - 20;
       this.left = (this.gameScreen.clientWidth - this.width) / 2;
       this.element = document.createElement("img");
       this.speed = 3;
       this.directionX = 0;
   
-      this.element.src = "../images/superman";
+      this.element.src = "../images/superman.png";
       this.element.style.position = "absolute";
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
@@ -45,7 +45,7 @@ class superman {
         supermanRect.top < blasterRect.bottom &&
         supermanRect.bottom > blasterRect.top
       ) {
-        console.log("You took a hit!");
+        console.log("You took got blasted!");
   
         return true;
       } else {

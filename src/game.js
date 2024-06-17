@@ -4,13 +4,16 @@ class Game{
         this.startScreen = document.querySelector('#game-intro')
         this.gameScreen = document.querySelector('#game-screen')
         this.endScreen = document.querySelector('#game-end')
-        this.width = 800;
+        this.width = 600;
         this.height = 600;
+        this.score = 0;
 
+        this.alienArmy;
         this.superman;
-        this.alienArmy = [];
 
         this.currentFrame = 0;
+        this.lives = 1;
+        this.gameOver = false;
     }
 
     start() {
@@ -21,7 +24,8 @@ class Game{
         this.gameScreen.style.display = 'block'
         this.endScreen.style.display = 'none'   
 
-        this.player = new Player(this.gameScreen)
-        this.aliens.push(new Aliens(this.gameScreen))
+        this.superman = new Superman(this.gameScreen)
+        this.alienArmy = new AlienArmy();
+        this.alienArmy.createArmy(1);
     }
 } 
