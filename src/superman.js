@@ -6,11 +6,12 @@ class Superman {
       this.top = this.gameScreen.clientHeight - this.height - 20;
       this.left = (this.gameScreen.clientWidth - this.width) / 2;
       this.element = document.createElement("img");
-      this.speed = 3;
+      this.speed = 4;
       this.directionX = 0;
   
       this.element.src = "../images/superman.png";
       this.element.style.position = "absolute";
+      this.element.className = 'player';
       this.element.style.width = `${this.width}px`;
       this.element.style.height = `${this.height}px`;
       this.element.style.top = `${this.top}px`;
@@ -33,24 +34,6 @@ class Superman {
         */
       this.element.style.top = `${this.top}px`;
       this.element.style.left = `${this.left}px`;
-    }
-  
-    gotHit(blaster) {
-      const supermanRect = this.element.getBoundingClientRect();
-      const blasterRect = lazer.element.getBoundingClientRect();
-  
-      if (
-        supermanRect.left < blasterRect.right &&
-        supermanRect.right > blasterRect.left &&
-        supermanRect.top < blasterRect.bottom &&
-        supermanRect.bottom > blasterRect.top
-      ) {
-        console.log("You took got blasted!");
-  
-        return true;
-      } else {
-        return false;
-      }
     }
   }
   
