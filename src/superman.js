@@ -9,7 +9,7 @@ class Superman {
       this.speed = 4;
       this.directionX = 0;
   
-      this.element.src = "/images/superman.png";
+      this.element.src = "images/superman.png";
       this.element.style.position = "absolute";
       this.element.className = 'player';
       this.element.style.width = `${this.width}px`;
