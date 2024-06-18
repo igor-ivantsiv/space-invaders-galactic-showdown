@@ -25,7 +25,7 @@ class AlienArmy {
           cell.style.width = `${this.width}px`;
           cell.style.height = `${this.height}px`;
           const img = document.createElement("img");
-          img.src = "../images/alien.png";
+          img.src = "/images/alien.png";
           img.style.width = `${this.width - 10}px`;
           img.style.height = `${this.height - 10}px`;
           img.className = "invader";
