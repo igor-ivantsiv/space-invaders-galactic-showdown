@@ -20,26 +20,26 @@ class Game {
   }
 
   start() {
-    document.querySelectorAll('shot').forEach(shot => {
-        shot.remove();
-      });
-      this.gameScreen.style.width = `${this.width}px`;
-      this.gameScreen.style.height = `${this.height}px`;
+    document.querySelectorAll("shot").forEach((shot) => {
+      shot.remove();
+    });
+    this.gameScreen.style.width = `${this.width}px`;
+    this.gameScreen.style.height = `${this.height}px`;
 
-      this.startScreen.style.display = "none";
-      this.gameScreen.style.display = "block";
-      this.endScreen.style.display = "none";
+    this.startScreen.style.display = "none";
+    this.gameScreen.style.display = "block";
+    this.endScreen.style.display = "none";
 
-      this.superman = new Superman(this.gameScreen);
-      this.alienArmy = new AlienArmy(this.gameScreen);
-      this.alienArmy.createArmy(1);
-      this.moveArmy();
-      this.generateBlasters();
+    this.superman = new Superman(this.gameScreen);
+    this.alienArmy = new AlienArmy(this.gameScreen);
+    this.alienArmy.createArmy(1);
+    this.moveArmy();
+    this.generateBlasters();
 
-      const intervalId = setInterval(() => {
-        this.currentFrame += 1;
-        this.superman.move();
-      }, 1000 / 60);
+    const intervalId = setInterval(() => {
+      this.currentFrame += 1;
+      this.superman.move();
+    }, 1000 / 60);
   }
   generateBlasters() {
     const intervalId = setInterval(() => {
@@ -59,15 +59,13 @@ class Game {
         shot.style.height = "10px";
         shot.style.left = `${invaderPosition.left}px`;
         shot.style.top = `${invaderPosition.top + invaderPosition.height}px`;
-        shot.className = 'shot';
+        shot.className = "shot";
         shot.setAttribute("id", `${this.currentFrame}`);
         this.gameScreen.appendChild(shot);
         this.blasterHandling(`${this.currentFrame}`);
-      } 
-      else if (this.gameOver) {
+      } else if (this.gameOver) {
         clearInterval(intervalId);
-      }
-      else {
+      } else {
         clearInterval(intervalId);
         this.generateBlasters();
       }
@@ -83,11 +81,10 @@ class Game {
 
       blaster.style.top = `${blasterPosition + this.blasterSpeed}px`;
 
-      if (this.gameOver){
+      if (this.gameOver) {
         clearInterval(intervalId);
         blaster.remove();
-      }
-      else if (blasterPosition > gameHeight) {
+      } else if (blasterPosition > gameHeight) {
         clearInterval(intervalId);
         blaster.remove();
       } else if (blasterPosition < gameHeight) {
@@ -117,27 +114,29 @@ class Game {
       this.clearGame();
     }
   }
-  clearGame(){
-    document.querySelector('.player').remove();
-    document.querySelectorAll('tr').forEach(tr => {
+  clearGame() {
+    document.querySelector(".player").remove();
+    document.querySelectorAll("tr").forEach((tr) => {
       tr.remove();
     });
-    document.querySelectorAll('.invader').forEach(invader => {
+    document.querySelectorAll(".invader").forEach((invader) => {
       invader.remove();
     });
-    document.querySelectorAll('shot').forEach(shot => {
+    document.querySelectorAll("shot").forEach((shot) => {
       shot.remove();
     });
-    
   }
   moveArmy() {
     const intervalId = setInterval(() => {
-        if (this.gameOver){
-            clearInterval(intervalId);
-            this.alienArmy.army.style.left = '0px';
-        }
-      else if (this.alienArmy.directionX === 1) {
-        if (this.alienArmy.left === this.alienArmy.gameScreen.clientWidth - this.alienArmy.army.clientWidth) {
+      if (this.gameOver) {
+        clearInterval(intervalId);
+        this.alienArmy.army.style.left = "0px";
+      } else if (this.alienArmy.directionX === 1) {
+        if (
+          this.alienArmy.left ===
+          this.alienArmy.gameScreen.clientWidth -
+            this.alienArmy.army.clientWidth
+        ) {
           this.alienArmy.directionX = -1;
         } else {
           this.alienArmy.left += this.alienArmy.speed;
@@ -153,47 +152,46 @@ class Game {
       }
     }, 1000 / 60);
   }
-  generateLazer(){
-    let shooting 
-const intervalId = setInterval(() => {
-  
-    const supermanPosition = this.superman.element.getBoundingClientRect();
-    const lazer = document.createElement('div');
-    lazer.style.backgroundColor = "red";
-    lazer.style.position = "absolute";
-    lazer.style.width = "6px";
-    lazer.style.height = "10px";
-    lazer.style.left = `${supermanPosition.left + this.superman.width / 2 - 3}px`;
-    lazer.style.top = `${supermanPosition.top - 10}px`;
-    lazer.className = 'lazer';
-    lazer.setAttribute("id", `lazer${this.currentFrame}`);
-    this.gameScreen.appendChild(lazer);
-    this.lazerHandling(`lazer${this.currentFrame}`);
-    console.log(`lazer fired`);
-    clearInterval(intervalId);
-}, 1000 / 3);
+  generateLazer() {
+    const intervalId = setInterval(() => {
+      const supermanPosition = this.superman.element.getBoundingClientRect();
+      const lazer = document.createElement("div");
+      lazer.style.backgroundColor = "red";
+      lazer.style.position = "absolute";
+      lazer.style.width = "6px";
+      lazer.style.height = "10px";
+      lazer.style.left = `${
+        supermanPosition.left + this.superman.width / 2 - 3
+      }px`;
+      lazer.style.top = `${supermanPosition.top - 10}px`;
+      lazer.className = "lazer";
+      lazer.setAttribute("id", `lazer${this.currentFrame}`);
+      this.gameScreen.appendChild(lazer);
+      this.lazerHandling(`lazer${this.currentFrame}`);
+      console.log(`lazer fired`);
+      clearInterval(intervalId);
+    }, 1000 / 3);
   }
-  lazerHandling(lazerSelector){
+  lazerHandling(lazerSelector) {
     let lazer = document.getElementById(lazerSelector);
 
     const intervalId = setInterval(() => {
-        let lazerRect = lazer.getBoundingClientRect()
+      let lazerRect = lazer.getBoundingClientRect();
       let lazerPosition = lazerRect.top;
 
       lazer.style.top = `${lazerPosition - this.lazerSpeed}px`;
 
-      if (this.gameOver){
+      if (this.gameOver) {
         clearInterval(intervalId);
         lazer.remove();
-      }
-      else if (lazerPosition < 10) {
+      } else if (lazerPosition < 10) {
         clearInterval(intervalId);
         lazer.remove();
       } else if (lazerPosition > 10) {
-        const allInvaders = document.querySelectorAll('.invader');
+        const allInvaders = document.querySelectorAll(".invader");
         allInvaders.forEach((invader) => {
-           const invaderRect = invader.getBoundingClientRect();
-           if (
+          const invaderRect = invader.getBoundingClientRect();
+          if (
             invaderRect.left < lazerRect.right &&
             invaderRect.right > lazerRect.left &&
             invaderRect.top < lazerRect.bottom &&
@@ -203,16 +201,21 @@ const intervalId = setInterval(() => {
             lazer.remove();
             console.log("You lazered an invader!");
             this.checkArmy();
+          } else {
+            return false;
           }
-          else {
-            return false; 
-          }
-        })
+        });
       }
     }, 1000 / 60);
   }
 
   checkArmy() {
-    
+    const allInvaders = document.querySelectorAll(".invader");
+    if (allInvaders.length === 0) {
+      this.gameScreen.style.display = "none";
+      this.endScreen.style.display = "block";
+      this.gameOver = "true";
+      this.clearGame();
+    }
   }
 }

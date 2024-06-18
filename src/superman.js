@@ -22,16 +22,15 @@ class Superman {
   
     move() {
       this.left += this.directionX * this.speed;
-      /*
-      // Left side
-      if (this.left < GRASS_WIDTH) {
-        this.left = GRASS_WIDTH
+  
+      if (this.left < 1) {
+        this.left = 0
       }
       // Right side
-      if (this.left > this.gameScreen.clientWidth - this.width - GRASS_WIDTH) {
-        this.left = this.gameScreen.clientWidth - this.width - GRASS_WIDTH
+      if (this.left > this.gameScreen.clientWidth - this.width) {
+        this.left = this.gameScreen.clientWidth - this.width
       } 
-        */
+     
       this.element.style.top = `${this.top}px`;
       this.element.style.left = `${this.left}px`;
     }
