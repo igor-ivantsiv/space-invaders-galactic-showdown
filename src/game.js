@@ -8,7 +8,6 @@ class Game {
     this.height = 600;
     this.score = 0;
 
-    this.gameId;
     this.alienArmy;
     this.superman;
     this.blasterSpeed = 4;
@@ -41,6 +40,7 @@ class Game {
       this.superman.move();
     }, 1000 / 60);
   }
+
   generateBlasters() {
     const intervalId = setInterval(() => {
       let randomRow = Math.floor(Math.random() * 8);
@@ -106,6 +106,7 @@ class Game {
       }
     }, 1000 / 60);
   }
+
   checkLives() {
     if (this.lives === 0) {
       this.gameScreen.style.display = "none";
@@ -114,6 +115,7 @@ class Game {
       this.clearGame();
     }
   }
+
   clearGame() {
     document.querySelector(".player").remove();
     document.querySelectorAll("tr").forEach((tr) => {
@@ -126,6 +128,7 @@ class Game {
       shot.remove();
     });
   }
+
   moveArmy() {
     const intervalId = setInterval(() => {
       if (this.gameOver) {
@@ -152,6 +155,7 @@ class Game {
       }
     }, 1000 / 60);
   }
+
   generateLazer() {
     const intervalId = setInterval(() => {
       const supermanPosition = this.superman.element.getBoundingClientRect();
@@ -172,6 +176,7 @@ class Game {
       clearInterval(intervalId);
     }, 1000 / 3);
   }
+  
   lazerHandling(lazerSelector) {
     let lazer = document.getElementById(lazerSelector);
 

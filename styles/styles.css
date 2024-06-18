@@ -1,13 +1,75 @@
+.vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
 body {
     padding: 0;
     text-align: center;
-    margin: 0;
+    margin: 0 auto;
   }
-  
   #game-intro {
     padding: 20px 0px;
+    background-image: url(../images/space.jpg);
+    background-size: cover;
+    margin: 0 auto;
+    height: 600px;
+    width: 600px;
   }
-  
+  h1 {
+    font-family: "VT323";
+    color: #e6d438e3;
+    margin: 10px 0;
+    font-size: 46px;
+    text-shadow:  2px 2px 4px #870007;
+  }
+  .instruction-text{
+    font-family: "VT323";
+    color: white;
+    font-size: 20px;
+    margin: 40px 10px;
+    padding: 0 50px;
+    text-shadow:  2px 2px 4px #870007;
+  }
+
+  .title {
+    width: 400px;
+    height: 200px;
+  }
+  .keys {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .space-button{
+    height: 30px;
+    width: 150px;
+  }
+  .arrow-buttons{
+    height: 30px;
+    width: 30px;
+    padding: 0 5px;
+  }
+  .game-start {
+    display: flex;
+    justify-content: space;
+  }
+  body button {
+    text-shadow:  2px 2px 4px #870007;
+    font-size: 30px;
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    font-family: "VT323";
+  }
+  .hype-text {
+    font-family: "VT323";
+    color: white;
+    font-size: 20px;
+    text-shadow:  2px 2px 4px #870007;
+  }
   #game-container {
     display: flex;
     width: 100vw;
@@ -25,53 +87,19 @@ body {
     background-size: cover;
   }
   
-  @keyframes slide {
-    0% {
-      background-position: 0 -1000px;
-    }
-    95% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 0 50px;
-    }
-  }
-  
   #game-end {
     display: none;
+    height: 600px;
+    width: 600px;
   }
-  
-  .game-intro p {
-    font-size: 18px;
-    font-family: "Verdana";
+  .game-start {
+    display: flex;
+    padding: 50px;
+justify-content: space-evenly;
   }
-  
-  .logo-img {
-    width: 350px;
-  }
-  
-  .arrows-img {
-    width: 150px;
-  }
-  
-  body button {
-    font-size: 30px;
-    background-color: #870007;
-    color: #fff;
-    padding: 20px 40px;
-    border: 0;
-    box-shadow: 0;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
+
 #alien-army {
     position: absolute;
     left: 0;
     top: 20px;
 }
-  td {
-    color: white;
-    width: 30px;
-    height: 30px;
-
-  }

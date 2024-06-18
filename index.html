@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Superman: Galactic Showdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
     <main>
         <!-- #game-intro is initially shown on the game start screen -->
         <div id="game-intro">
-          <img src="" alt="" class="logo-img" />
-          <br />
-          <button id="start-button">Start Game</button>
-          <p>Use the left and right arrow to control superman and use the space button to fire lazers at the invading alien army!</p>
-          <img src="" alt="" class="arrows-img" />
-        </div>
-
-
+          <header>
+            <img class="title" src="/images/Space-Invaders-Logo.png" alt="title logo">
+          <h1>Galactic Showdown</h1>
+        </header>
+<section class = "instructions">
+  <p class="instruction-text">Use the left and right arrow to control superman and use the space button to fire lazers at the invading alien army!</p>
+  <div class = "keys">
+    <img class="space-button" src="/images/SPACEALTERNATIVE.png" alt="space button">
+    <div>
+      <img class="arrow-buttons" src="/images/ARROWLEFT.png" alt="left button">
+      <img class="arrow-buttons" src="/images/ARROWRIGHT.png" alt="right button">
+    </div>
+  </div>
+  <section class="game-start">
+      <p class="hype-text">Ready to save the world?</p>
+    <button id="start-button">Start Game</button>
+  </section>
           <!-- #game-screen is initially hidden using CSS style display: none -->
           <div id="game-screen">
             <table id = "alien-army">
                   </table>
           </div>
-  
         <!-- #game-end is initially hidden using CSS style display: none -->
         <div id="game-end">
-          <img src="" alt="" class="logo-img" />
+
           <h1>Game Over</h1>
           <br />
           <button id="restart-button">Restart</button>

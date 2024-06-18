@@ -26,7 +26,6 @@ class Superman {
       if (this.left < 1) {
         this.left = 0
       }
-      // Right side
       if (this.left > this.gameScreen.clientWidth - this.width) {
         this.left = this.gameScreen.clientWidth - this.width
       } 
