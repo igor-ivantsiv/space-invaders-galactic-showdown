@@ -12,6 +12,7 @@ class Game {
     this.alienArmy;
     this.superman;
     this.blasterSpeed = 4;
+    this.lazerSpeed = 5;
 
     this.currentFrame = 0;
     this.lives = 1;
@@ -68,7 +69,7 @@ class Game {
       }
       else {
         clearInterval(intervalId);
-        this.blasters();
+        this.generateBlasters();
       }
     }, 1000);
   }
@@ -151,5 +152,67 @@ class Game {
         }
       }
     }, 1000 / 60);
+  }
+  generateLazer(){
+    let shooting 
+const intervalId = setInterval(() => {
+  
+    const supermanPosition = this.superman.element.getBoundingClientRect();
+    const lazer = document.createElement('div');
+    lazer.style.backgroundColor = "red";
+    lazer.style.position = "absolute";
+    lazer.style.width = "6px";
+    lazer.style.height = "10px";
+    lazer.style.left = `${supermanPosition.left + this.superman.width / 2 - 3}px`;
+    lazer.style.top = `${supermanPosition.top - 10}px`;
+    lazer.className = 'lazer';
+    lazer.setAttribute("id", `lazer${this.currentFrame}`);
+    this.gameScreen.appendChild(lazer);
+    this.lazerHandling(`lazer${this.currentFrame}`);
+    console.log(`lazer fired`);
+    clearInterval(intervalId);
+}, 1000 / 3);
+  }
+  lazerHandling(lazerSelector){
+    let lazer = document.getElementById(lazerSelector);
+
+    const intervalId = setInterval(() => {
+        let lazerRect = lazer.getBoundingClientRect()
+      let lazerPosition = lazerRect.top;
+
+      lazer.style.top = `${lazerPosition - this.lazerSpeed}px`;
+
+      if (this.gameOver){
+        clearInterval(intervalId);
+        lazer.remove();
+      }
+      else if (lazerPosition < 10) {
+        clearInterval(intervalId);
+        lazer.remove();
+      } else if (lazerPosition > 10) {
+        const allInvaders = document.querySelectorAll('.invader');
+        allInvaders.forEach((invader) => {
+           const invaderRect = invader.getBoundingClientRect();
+           if (
+            invaderRect.left < lazerRect.right &&
+            invaderRect.right > lazerRect.left &&
+            invaderRect.top < lazerRect.bottom &&
+            invaderRect.bottom > lazerRect.top
+          ) {
+            invader.remove();
+            lazer.remove();
+            console.log("You lazered an invader!");
+            this.checkArmy();
+          }
+          else {
+            return false; 
+          }
+        })
+      }
+    }, 1000 / 60);
+  }
+
+  checkArmy() {
+    
   }
 }

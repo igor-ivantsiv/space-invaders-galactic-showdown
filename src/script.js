@@ -41,5 +41,10 @@ window.onload = function () {
       game.superman.directionX = 0
     }
   })
+  document.addEventListener('keydown', event => {
+    if (event.code === 'Space'){
+      game.generateLazer();
+    }
+  })
 
 };
