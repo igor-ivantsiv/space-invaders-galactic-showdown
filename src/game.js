@@ -226,7 +226,7 @@ class Game {
       }
     }, 1000 / 60);
   }
-
+  
   checkArmy() {
     const allInvaders = document.querySelectorAll(".invader");
     if (allInvaders.length === 0) {
@@ -239,7 +239,6 @@ class Game {
         "You successfully detered the enemy force and saved mankind! To do this again press the restart button!";
     }
   }
-
   playSoundEffect(trigger) {
     if (trigger === "blaster") {
       const blasterSound = new Audio("audio/blaster.mp3");
