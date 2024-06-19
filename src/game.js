@@ -51,13 +51,17 @@ class Game {
       );
 
       if (targetInvader) {
+        let body = document.querySelector('body');
+        let bodyRect = body.getBoundingClientRect();
+        let bodyWidth = Math.round(bodyRect.width);
+      let marginCorrection = (bodyWidth - this.width) / 2;
         let invaderPosition = targetInvader.getBoundingClientRect();
         const shot = document.createElement("div");
         shot.style.backgroundColor = "green";
         shot.style.position = "absolute";
         shot.style.width = "5px";
         shot.style.height = "10px";
-        shot.style.left = `${invaderPosition.left}px`;
+        shot.style.left = `${invaderPosition.left - marginCorrection}px`;
         shot.style.top = `${invaderPosition.top + invaderPosition.height}px`;
         shot.className = "shot";
         shot.setAttribute("id", `${this.currentFrame}`);
@@ -110,7 +114,7 @@ class Game {
   checkLives() {
     if (this.lives === 0) {
       this.gameScreen.style.display = "none";
-      this.endScreen.style.display = "block";
+      this.endScreen.style.display = "flex";
       this.gameOver = "true";
       this.clearGame();
     }
@@ -158,6 +162,10 @@ class Game {
 
   generateLazer() {
     const intervalId = setInterval(() => {
+                let body = document.querySelector('body');
+        let bodyRect = body.getBoundingClientRect();
+        let bodyWidth = Math.round(bodyRect.width);
+      let marginCorrection = (bodyWidth - this.width) / 2;
       const supermanPosition = this.superman.element.getBoundingClientRect();
       const lazer = document.createElement("div");
       lazer.style.backgroundColor = "red";
@@ -165,7 +173,7 @@ class Game {
       lazer.style.width = "6px";
       lazer.style.height = "10px";
       lazer.style.left = `${
-        supermanPosition.left + this.superman.width / 2 - 3
+        (supermanPosition.left + this.superman.width / 2 - 3) - marginCorrection
       }px`;
       lazer.style.top = `${supermanPosition.top - 10}px`;
       lazer.className = "lazer";
@@ -176,7 +184,7 @@ class Game {
       clearInterval(intervalId);
     }, 1000 / 3);
   }
-  
+
   lazerHandling(lazerSelector) {
     let lazer = document.getElementById(lazerSelector);
 
@@ -218,9 +226,11 @@ class Game {
     const allInvaders = document.querySelectorAll(".invader");
     if (allInvaders.length === 0) {
       this.gameScreen.style.display = "none";
-      this.endScreen.style.display = "block";
+      this.endScreen.style.display = "flex";
       this.gameOver = "true";
       this.clearGame();
+      document.querySelector('h2').innerText = "You did it!"
+      document.querySelector('.end-text').innerText = "You successfully detered the enemy force and saved mankind! To try again press the restart button!"
     }
   }
 }

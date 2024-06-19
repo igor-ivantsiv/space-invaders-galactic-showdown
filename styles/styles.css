@@ -9,17 +9,27 @@ body {
     margin: 0 auto;
   }
   #game-intro {
-    padding: 20px 0px;
     background-image: url(../images/space.jpg);
     background-size: cover;
     margin: 0 auto;
     height: 600px;
     width: 600px;
+    position: relative;
+  }
+  header {
+    padding-top: 20px;
   }
   h1 {
     font-family: "VT323";
     color: #e6d438e3;
     margin: 10px 0;
+    font-size: 46px;
+    text-shadow:  2px 2px 4px #870007;
+  }
+  h2 {
+    margin: 0;
+    font-family: "VT323";
+    color: #e6d438e3;
     font-size: 46px;
     text-shadow:  2px 2px 4px #870007;
   }
@@ -56,6 +66,8 @@ body {
   body button {
     text-shadow:  2px 2px 4px #870007;
     font-size: 30px;
+    width: 160px;
+    height: 60px;
     background-color: #ff6600;
     color: #fff;
     padding: 10px 20px;
@@ -72,7 +84,9 @@ body {
   }
   #game-container {
     display: flex;
-    width: 100vw;
+    margin: 0 auto;
+    height: 600px;
+    width: 600px;
     padding: 20px 0px;
     justify-content: center;
   }
@@ -80,7 +94,7 @@ body {
   #game-screen {
     display: none;
     align-content: center;
-    padding: 20px 0px;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
     background-image: url(../images/space.jpg);
@@ -89,8 +103,23 @@ body {
   
   #game-end {
     display: none;
+    background-image: url(../images/space.jpg);
+    background-size: cover;
+    margin: 0 auto;
     height: 600px;
     width: 600px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .end-text {
+    font-family: "VT323";
+    color: white;
+    font-size: 20px;
+    margin: 50px 10px;
+    padding: 10px 50px;
+    text-shadow:  2px 2px 4px #870007;
   }
   .game-start {
     display: flex;
