@@ -226,7 +226,7 @@ class Game {
       }
     }, 1000 / 60);
   }
-  
+
   checkArmy() {
     const allInvaders = document.querySelectorAll(".invader");
     if (allInvaders.length === 0) {
@@ -248,13 +248,13 @@ class Game {
       blasterSound.play();
     } else if (trigger === "laser") {
       const laserSound = new Audio("audio/laser.mp3"); 
-      laserSound.volume = 0.5;
+      laserSound.volume = 0.3;
       laserSound.loop = false;
       laserSound.playbackRate = 2.0;
       laserSound.play();
     } else if (trigger === "playerHit") {
       const playerHitSound = new Audio("audio/player-hit.mp3");
-      playerHitSound.volume = 0.3;
+      playerHitSound.volume = 0.2;
       playerHitSound.loop = false;
       playerHitSound.playbackRate = 1.0;
       playerHitSound.play();
