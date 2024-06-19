@@ -230,7 +230,7 @@ class Game {
       this.gameOver = "true";
       this.clearGame();
       document.querySelector('h2').innerText = "You did it!"
-      document.querySelector('.end-text').innerText = "You successfully detered the enemy force and saved mankind! To try again press the restart button!"
+      document.querySelector('.end-text').innerText = "You successfully detered the enemy force and saved mankind! To do this again press the restart button!"
     }
   }
 }
