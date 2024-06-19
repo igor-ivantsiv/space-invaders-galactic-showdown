@@ -19,32 +19,34 @@ window.onload = function () {
     startGame();
   });
 
-  document.addEventListener('keydown', event => {
-    if (event.code === 'KeyA' || event.code === 'ArrowLeft') {
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "KeyA" || event.code === "ArrowLeft") {
       // Move to the left
-      game.superman.directionX = -1
+      game.superman.directionX = -1;
     }
-    if (event.code === 'KeyD' || event.code === 'ArrowRight') {
+    if (event.code === "KeyD" || event.code === "ArrowRight") {
       // Move to the right
-      game.superman.directionX = 1
+      game.superman.directionX = 1;
     }
-  })
+  });
 
-  document.addEventListener('keyup', event => {
+  document.addEventListener("keyup", (event) => {
     if (
-      event.code === 'KeyA' ||
-      event.code === 'ArrowLeft' ||
-      event.code === 'KeyD' ||
-      event.code === 'ArrowRight'
+      event.code === "KeyA" ||
+      event.code === "ArrowLeft" ||
+      event.code === "KeyD" ||
+      event.code === "ArrowRight"
     ) {
       // Stop superman from moving
-      game.superman.directionX = 0
+      game.superman.directionX = 0;
     }
-  })
-  document.addEventListener('keydown', event => {
-    if (event.code === 'Space'){
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
       game.generateLazer();
     }
-  })
-
+  });
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.3;
+    bgMusic.loop = true;
 };

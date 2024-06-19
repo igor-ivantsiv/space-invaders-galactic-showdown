@@ -51,10 +51,10 @@ class Game {
       );
 
       if (targetInvader) {
-        let body = document.querySelector('body');
+        let body = document.querySelector("body");
         let bodyRect = body.getBoundingClientRect();
         let bodyWidth = Math.round(bodyRect.width);
-      let marginCorrection = (bodyWidth - this.width) / 2;
+        let marginCorrection = (bodyWidth - this.width) / 2;
         let invaderPosition = targetInvader.getBoundingClientRect();
         const shot = document.createElement("div");
         shot.style.backgroundColor = "green";
@@ -66,6 +66,7 @@ class Game {
         shot.className = "shot";
         shot.setAttribute("id", `${this.currentFrame}`);
         this.gameScreen.appendChild(shot);
+        this.playSoundEffect("blaster");
         this.blasterHandling(`${this.currentFrame}`);
       } else if (this.gameOver) {
         clearInterval(intervalId);
@@ -100,6 +101,7 @@ class Game {
           supermanRect.top < blasterRect.bottom &&
           supermanRect.bottom > blasterRect.top
         ) {
+          this.playSoundEffect("playerHit");
           blaster.remove();
           console.log("You got blasted!");
           this.lives -= 1;
@@ -161,28 +163,31 @@ class Game {
   }
 
   generateLazer() {
-    const intervalId = setInterval(() => {
-                let body = document.querySelector('body');
-        let bodyRect = body.getBoundingClientRect();
-        let bodyWidth = Math.round(bodyRect.width);
-      let marginCorrection = (bodyWidth - this.width) / 2;
-      const supermanPosition = this.superman.element.getBoundingClientRect();
-      const lazer = document.createElement("div");
-      lazer.style.backgroundColor = "red";
-      lazer.style.position = "absolute";
-      lazer.style.width = "6px";
-      lazer.style.height = "10px";
-      lazer.style.left = `${
-        (supermanPosition.left + this.superman.width / 2 - 3) - marginCorrection
-      }px`;
-      lazer.style.top = `${supermanPosition.top - 10}px`;
-      lazer.className = "lazer";
-      lazer.setAttribute("id", `lazer${this.currentFrame}`);
-      this.gameScreen.appendChild(lazer);
-      this.lazerHandling(`lazer${this.currentFrame}`);
-      console.log(`lazer fired`);
-      clearInterval(intervalId);
-    }, 1000 / 3);
+    if (!this.gameOver){
+        const intervalId = setInterval(() => {
+            let body = document.querySelector("body");
+            let bodyRect = body.getBoundingClientRect();
+            let bodyWidth = Math.round(bodyRect.width);
+            let marginCorrection = (bodyWidth - this.width) / 2;
+            const supermanPosition = this.superman.element.getBoundingClientRect();
+            const lazer = document.createElement("div");
+            lazer.style.backgroundColor = "red";
+            lazer.style.position = "absolute";
+            lazer.style.width = "6px";
+            lazer.style.height = "10px";
+            lazer.style.left = `${
+              supermanPosition.left + this.superman.width / 2 - 3 - marginCorrection
+            }px`;
+            lazer.style.top = `${supermanPosition.top - 10}px`;
+            lazer.className = "lazer";
+            lazer.setAttribute("id", `lazer${this.currentFrame}`);
+            this.gameScreen.appendChild(lazer);
+            this.playSoundEffect("laser");
+            this.lazerHandling(`lazer${this.currentFrame}`);
+            clearInterval(intervalId);
+          }, 1000 / 3);
+    }
+ else false;
   }
 
   lazerHandling(lazerSelector) {
@@ -210,9 +215,9 @@ class Game {
             invaderRect.top < lazerRect.bottom &&
             invaderRect.bottom > lazerRect.top
           ) {
+            this.playSoundEffect("alienHit");
             invader.remove();
             lazer.remove();
-            console.log("You lazered an invader!");
             this.checkArmy();
           } else {
             return false;
@@ -229,8 +234,37 @@ class Game {
       this.endScreen.style.display = "flex";
       this.gameOver = "true";
       this.clearGame();
-      document.querySelector('h2').innerText = "You did it!"
-      document.querySelector('.end-text').innerText = "You successfully detered the enemy force and saved mankind! To do this again press the restart button!"
+      document.querySelector("h2").innerText = "You did it!";
+      document.querySelector(".end-text").innerText =
+        "You successfully detered the enemy force and saved mankind! To do this again press the restart button!";
+    }
+  }
+
+  playSoundEffect(trigger) {
+    if (trigger === "blaster") {
+      const blasterSound = new Audio("audio/blaster.mp3");
+      blasterSound.volume = 0.7;
+      blasterSound.loop = false;
+      blasterSound.playbackRate = 2.0;
+      blasterSound.play();
+    } else if (trigger === "laser") {
+      const laserSound = new Audio("audio/laser.mp3"); 
+      laserSound.volume = 0.5;
+      laserSound.loop = false;
+      laserSound.playbackRate = 2.0;
+      laserSound.play();
+    } else if (trigger === "playerHit") {
+      const playerHitSound = new Audio("audio/player-hit.mp3");
+      playerHitSound.volume = 0.3;
+      playerHitSound.loop = false;
+      playerHitSound.playbackRate = 1.0;
+      playerHitSound.play();
+    } else if (trigger === "alienHit") {
+      const alienHitSound = new Audio("audio/alien-hit.mp3");
+      alienHitSound.volume = 0.7;
+      alienHitSound.loop = false;
+      alienHitSound.playbackRate = 2.0;
+      alienHitSound.play();
     }
   }
 }
