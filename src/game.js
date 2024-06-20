@@ -44,7 +44,7 @@ class Game {
     }, 1000 / 60);
   }
     // Sound effects
-  playSoundEffect(trigger) {
+    playSoundEffect(trigger) {
     if (trigger === "blaster") {
       const blasterSound = new Audio("audio/blaster.mp3");
       blasterSound.volume = 0.7;
