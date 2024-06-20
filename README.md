@@ -7,7 +7,6 @@ Space Invaders: Galactic Showdown is a game where you play as a starfighter defe
 
 
 ## MVP
-_MVP definition here, list of minimum features_
 1. Intro screen with instructions and a button to start the game
 2. Single level game with logic for winning or losing:
     - Starfighter moves and changes direction by using the `left` and `right`buttons.
