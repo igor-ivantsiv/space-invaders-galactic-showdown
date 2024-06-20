@@ -1,7 +1,9 @@
 window.onload = function () {
-  const startButton = document.getElementById("start-button");
-  const restartButton = document.getElementById("restart-button");
-
+    // Background music settings
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.volume = 0.1;
+  bgMusic.loop = true;
+    // Starting the game
   let game;
 
   function startGame() {
@@ -9,6 +11,10 @@ window.onload = function () {
     game = new Game();
     game.start();
   }
+
+    // Event listeners for buttons, player movement & player shooting
+  const startButton = document.getElementById("start-button");
+  const restartButton = document.getElementById("restart-button");
 
   startButton.addEventListener("click", function () {
     console.log(`Start button clicked`);
@@ -22,11 +28,11 @@ window.onload = function () {
   document.addEventListener("keydown", (event) => {
     if (event.code === "KeyA" || event.code === "ArrowLeft") {
       // Move to the left
-      game.superman.directionX = -1;
+      game.player.directionX = -1;
     }
     if (event.code === "KeyD" || event.code === "ArrowRight") {
       // Move to the right
-      game.superman.directionX = 1;
+      game.player.directionX = 1;
     }
   });
 
@@ -37,16 +43,13 @@ window.onload = function () {
       event.code === "KeyD" ||
       event.code === "ArrowRight"
     ) {
-      // Stop superman from moving
-      game.superman.directionX = 0;
+      game.player.directionX = 0;
     }
   });
+
   document.addEventListener("keydown", (event) => {
     if (event.code === "Space") {
       game.generateLazer();
     }
   });
-    const bgMusic = document.getElementById('bgMusic');
-    bgMusic.volume = 0.3;
-    bgMusic.loop = true;
 };
