@@ -1,11 +1,19 @@
-var confirmation = confirm("Disclaimer: game contains background music and sound effects. Please proceed with caution.");
-if (confirmation) {
-  window.onload = function () {
-    // Background music settings
+    //Prompt for first user interaction
+window.onload = function () {
+  var confirmation = confirm("Disclaimer: game contains background music and sound effects. Please proceed with caution.");
+  if (confirmation) {
+    initGame();
+  }
+};
+    // Initializing the game
+function initGame() {
+  // Background music settings
   const bgMusic = document.getElementById('bgMusic');
-  bgMusic.volume = 0.1;
+  bgMusic.volume = 0.15;
   bgMusic.loop = true;
-    // Starting the game
+  bgMusic.play();
+
+  // Starting the game
   let game;
 
   function startGame() {
@@ -14,12 +22,12 @@ if (confirmation) {
     game.start();
   }
 
-    // Event listeners for buttons, player movement & player shooting
+  // Event listeners for buttons, player movement and player shooting
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
 
   startButton.addEventListener("click", function () {
-    console.log(`Start button clicked`);
+    console.log("Start button clicked");
     startGame();
   });
 
@@ -39,12 +47,7 @@ if (confirmation) {
   });
 
   document.addEventListener("keyup", (event) => {
-    if (
-      event.code === "KeyA" ||
-      event.code === "ArrowLeft" ||
-      event.code === "KeyD" ||
-      event.code === "ArrowRight"
-    ) {
+    if (event.code === "KeyA" || event.code === "ArrowLeft" || event.code === "KeyD" || event.code === "ArrowRight") {
       game.player.directionX = 0;
     }
   });
@@ -54,7 +57,7 @@ if (confirmation) {
       game.generateLazer();
     }
   });
-};
 }
+
 
 
