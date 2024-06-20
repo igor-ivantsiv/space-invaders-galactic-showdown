@@ -1,4 +1,6 @@
-window.onload = function () {
+var confirmation = confirm("Disclaimer: game contains background music and sound effects. Please proceed with caution.");
+if (confirmation) {
+  window.onload = function () {
     // Background music settings
   const bgMusic = document.getElementById('bgMusic');
   bgMusic.volume = 0.1;
@@ -53,3 +55,6 @@ window.onload = function () {
     }
   });
 };
+}
+
+
