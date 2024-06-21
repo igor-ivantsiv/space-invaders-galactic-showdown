@@ -254,6 +254,9 @@ class Game {
       this.endScreen.style.display = "flex";
       this.gameOver = "true";
       this.clearGame();
+      document.querySelector("h2").innerText = "Game Over";
+      document.querySelector(".end-text").innerText =
+        "You were not able to defeat the invading alien force this time. To try again press the restart button!";
     }
   }
     // Game reset function to clear all generated elements and intervals (if not already done within the original function)
