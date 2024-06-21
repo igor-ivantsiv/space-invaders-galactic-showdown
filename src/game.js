@@ -132,7 +132,7 @@ class Game {
         clearInterval(intervalId);
         this.generateBlasters();
       }
-    }, 800); // can be used to increase difficulty by increasing alien fire rate
+    }, 600); // can be used to increase difficulty by increasing alien fire rate
   }
     // Alien projectile movement, collision & clearing logic
   blasterHandling(blasterSelector) {
